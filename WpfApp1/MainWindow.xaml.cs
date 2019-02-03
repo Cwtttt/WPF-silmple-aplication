@@ -2,18 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace WpfApp1
@@ -34,13 +25,12 @@ namespace WpfApp1
         private int selectedId;
         List<Car> list = new List<Car>();
 
+
         public MainWindow()
         {
+
             InitializeComponent();
-            //Car car1 = new Car();
-            //car1.Mark = "BMW";
-            //car1.Model = "series 8";
-            //list.Add(car1);
+
 
             LoadDataFromFile();
 
@@ -62,11 +52,20 @@ namespace WpfApp1
             car1.Id = _id++;
             car1.Mark = txbMarka.Text;
             car1.Model = txbModel.Text;
-            list.Add(car1);
+            try
+            {
+                list.Add(car1);
+            }
+            catch(NullReferenceException)
+            {
+                list = new List<Car>();
+                list.Add(car1);
+                lviCarList.ItemsSource = list;
+                lviCarList.Items.Refresh();
+            }
+
             lviCarList.Items.Refresh();
             Clear();
-
-
         }
 
         private void lviDoubleClick(object sender, MouseButtonEventArgs e)
@@ -125,11 +124,17 @@ namespace WpfApp1
 
         public void LoadDataFromFile()
         {
-            using (StreamReader sr = new StreamReader(@"D:\file.txt"))
+            try
             {
-                list = JsonConvert.DeserializeObject<List<Car>>(sr.ReadToEnd().ToString());
+                using (StreamReader sr = new StreamReader(@"D:\file.txt"))
+                {
+                    list = JsonConvert.DeserializeObject<List<Car>>(sr.ReadToEnd().ToString());
+                }
             }
-
+            catch (FileNotFoundException)
+            {
+                using (FileStream fs = File.Create(@"D:\file.txt"));
+            }
         }
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
