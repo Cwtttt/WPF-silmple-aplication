@@ -5,16 +5,11 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
+using WpfApp1.Model;
 
 namespace WpfApp1
 {
-    public class Car
-    {
-        public int Id { get; set; }
-        public string Mark { get; set; }
-        public string Model { get; set; }
-    }
+
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -133,7 +128,7 @@ namespace WpfApp1
             }
             catch (FileNotFoundException)
             {
-                using (FileStream fs = File.Create(@"D:\file.txt"));
+                using (FileStream fs = File.Create(@"D:\file.txt")) { };
             }
         }
 
