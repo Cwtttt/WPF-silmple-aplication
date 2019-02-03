@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,35 +27,46 @@ namespace WpfApp1
 
             InitializeComponent();
 
+            using (var context = new CarContext())
+            {
+                var car = context.Cars.Where(c => c.Mark == "BMW").ToArray();
 
-            LoadDataFromFile();
+                context.Cars.RemoveRange(car);
+                context.SaveChanges();
+            }
 
-            //list.Add(new Car()
-            //{
-            //    Id = _id++,
-            //    Model = "BMW",
-            //    Mark = "Seria 8"
-            //});
+            //LoadDataFromFile();
 
-            lviCarList.ItemsSource = list;
+            ////list.Add(new Car()
+            ////{
+            ////    Id = _id++,
+            ////    Model = "BMW",
+            ////    Mark = "Seria 8"
+            ////});
+
+            //lviCarList.ItemsSource = list;
 
 
         }
 
         private void BtnNewCarClick(object sender, RoutedEventArgs e)
         {
-            Car car1 = new Car();
-            car1.Id = _id++;
-            car1.Mark = txbMarka.Text;
-            car1.Model = txbModel.Text;
+            Car car1 = new Car
+            {
+                Id = _id++,
+                Mark = txbMarka.Text,
+                Model = txbModel.Text
+            };
             try
             {
                 list.Add(car1);
             }
             catch(NullReferenceException)
             {
-                list = new List<Car>();
-                list.Add(car1);
+                list = new List<Car>
+                {
+                    car1
+                };
                 lviCarList.ItemsSource = list;
                 lviCarList.Items.Refresh();
             }
@@ -63,7 +75,7 @@ namespace WpfApp1
             Clear();
         }
 
-        private void lviDoubleClick(object sender, MouseButtonEventArgs e)
+        private void LviDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (lviCarList.SelectedItem is Car car)
             {
@@ -99,7 +111,7 @@ namespace WpfApp1
             }
         }
 
-        private void keyEnter(object sender, KeyEventArgs e)
+        private void KeyEnter(object sender, KeyEventArgs e)
         {
 
             if (e.Key == Key.Enter)

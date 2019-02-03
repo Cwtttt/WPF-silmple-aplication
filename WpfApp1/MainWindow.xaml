@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="308.347" Width="483.347" Closing="WindowClosing">
     <Grid>
-        <ListView x:Name="lviCarList" HorizontalAlignment="Left" Height="100" Margin="51,42,0,0" VerticalAlignment="Top" Width="216" MouseDoubleClick="lviDoubleClick">
+        <ListView x:Name="lviCarList" HorizontalAlignment="Left" Height="100" Margin="51,42,0,0" VerticalAlignment="Top" Width="216" MouseDoubleClick="LviDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Mark}"/>
@@ -23,8 +23,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="txbMarka" HorizontalAlignment="Left" Height="23" Margin="290,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="keyEnter"/>
-        <TextBox x:Name="txbModel" HorizontalAlignment="Left" Height="23" Margin="290,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="keyEnter"/>
+        <TextBox x:Name="txbMarka" HorizontalAlignment="Left" Height="23" Margin="290,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="KeyEnter"/>
+        <TextBox x:Name="txbModel" HorizontalAlignment="Left" Height="23" Margin="290,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="KeyEnter"/>
         <Button  x:Name="btnNewCar" Content="NewCar" HorizontalAlignment="Left" Margin="290,179,0,0" VerticalAlignment="Top" Width="75" Click="BtnNewCarClick"/>
         <Button x:Name ="btnEditCar" Content="EditCar" HorizontalAlignment="Left" Margin="390,178,0,0" VerticalAlignment="Top" Width="75" Height="21" Click="BtnEditCarClick" Visibility="Collapsed"/>
         <Button x:Name="btnClearAll" Content="Clear All"  HorizontalAlignment="Left" Margin="67,164,0,0" VerticalAlignment="Top" Width="75" Click="BtnClearAllClick"/>

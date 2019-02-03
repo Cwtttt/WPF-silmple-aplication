@@ -35,3 +35,7 @@ C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.
 C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
 C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\bin\Debug\EntityFramework.dll
+C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\bin\Debug\EntityFramework.xml
+C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\bin\Debug\EntityFramework.SqlServer.xml
