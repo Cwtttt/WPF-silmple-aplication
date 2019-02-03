@@ -28,7 +28,5 @@
         <Button  x:Name="btnNewCar" Content="NewCar" HorizontalAlignment="Left" Margin="290,179,0,0" VerticalAlignment="Top" Width="75" Click="BtnNewCarClick"/>
         <Button x:Name ="btnEditCar" Content="EditCar" HorizontalAlignment="Left" Margin="390,178,0,0" VerticalAlignment="Top" Width="75" Height="21" Click="BtnEditCarClick" Visibility="Collapsed"/>
         <Button x:Name="btnClearAll" Content="Clear All"  HorizontalAlignment="Left" Margin="67,164,0,0" VerticalAlignment="Top" Width="75" Click="BtnClearAllClick"/>
-        <Button Content="Wyświetl" HorizontalAlignment="Left" Margin="172,169,0,0" VerticalAlignment="Top" Width="75"/>
-
     </Grid>
 </Window>
