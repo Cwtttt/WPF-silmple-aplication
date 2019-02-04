@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,35 +7,15 @@ using WpfApp1.Model;
 
 namespace WpfApp1
 {
-
-
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-
         private Guid selectedId;
-        List<Car> list = new List<Car>();
         private CarContext context = new CarContext();
 
         public MainWindow()
         {
-
             InitializeComponent();
-
-            //using (var context = new CarContext())
-            //{
-            //    var car = context.Cars.Where(c => c.Mark == "BMW").ToArray();
-
-            //    context.Cars.RemoveRange(car);
-            //    context.SaveChanges();
-            //}
-
             UpdateList();
-
-
-
         }
 
         private void BtnNewCarClick(object sender, RoutedEventArgs e)
@@ -109,12 +88,6 @@ namespace WpfApp1
             context.Cars.RemoveRange(all);
             context.SaveChanges();
             UpdateList();
-        }
-
-
-        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
         }
 
         private void Clear()
