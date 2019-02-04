@@ -1,7 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,34 +15,26 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static int _id = 0;
-        private int selectedId;
-        List<Car> list = new List<Car>();
 
+        private Guid selectedId;
+        List<Car> list = new List<Car>();
+        private CarContext context = new CarContext();
 
         public MainWindow()
         {
 
             InitializeComponent();
 
-            using (var context = new CarContext())
-            {
-                var car = context.Cars.Where(c => c.Mark == "BMW").ToArray();
+            //using (var context = new CarContext())
+            //{
+            //    var car = context.Cars.Where(c => c.Mark == "BMW").ToArray();
 
-                context.Cars.RemoveRange(car);
-                context.SaveChanges();
-            }
+            //    context.Cars.RemoveRange(car);
+            //    context.SaveChanges();
+            //}
 
-            //LoadDataFromFile();
+            UpdateList();
 
-            ////list.Add(new Car()
-            ////{
-            ////    Id = _id++,
-            ////    Model = "BMW",
-            ////    Mark = "Seria 8"
-            ////});
-
-            //lviCarList.ItemsSource = list;
 
 
         }
@@ -53,25 +43,15 @@ namespace WpfApp1
         {
             Car car1 = new Car
             {
-                Id = _id++,
+                Id = Guid.NewGuid(),
                 Mark = txbMarka.Text,
                 Model = txbModel.Text
             };
-            try
-            {
-                list.Add(car1);
-            }
-            catch(NullReferenceException)
-            {
-                list = new List<Car>
-                {
-                    car1
-                };
-                lviCarList.ItemsSource = list;
-                lviCarList.Items.Refresh();
-            }
 
-            lviCarList.Items.Refresh();
+            context.Cars.Add(car1);
+            context.SaveChanges();
+
+            UpdateList();
             Clear();
         }
 
@@ -88,32 +68,32 @@ namespace WpfApp1
 
         private void BtnEditCarClick(object sender, RoutedEventArgs e)
         {
-            Car a = list.Find(x => x.Id == selectedId);
-            a.Mark = txbMarka.Text;
-            a.Model = txbModel.Text;
-            lviCarList.Items.Refresh();
+            Car a = context.Cars.SingleOrDefault(x => x.Id == selectedId);
+
+            if (a != null)
+            {
+                a.Mark = txbMarka.Text;
+                a.Model = txbModel.Text;
+                context.SaveChanges();
+            }
+            UpdateList();
             Clear();
         }
 
-        private void Clear()
-        {
-            txbMarka.Text = String.Empty;
-            txbModel.Text = String.Empty;
-        }
 
         private void BtnDeleteCarClick(object sender, RoutedEventArgs e)
         {
             if ((sender as Button).DataContext is Car car)
             {
-                Car a = list.Find(x => x.Id == car.Id);
-                list.Remove(a);
-                lviCarList.Items.Refresh();
+                Car a = context.Cars.ToList().Find(x => x.Id == car.Id);
+                context.Cars.Remove(a);
+                context.SaveChanges();
             }
+            UpdateList();
         }
 
         private void KeyEnter(object sender, KeyEventArgs e)
         {
-
             if (e.Key == Key.Enter)
             {
                 if ((sender as TextBox).Name == nameof(txbMarka).ToString())
@@ -125,32 +105,28 @@ namespace WpfApp1
 
         private void BtnClearAllClick(object sender, RoutedEventArgs e)
         {
-            list.Clear();
-            lviCarList.Items.Refresh();
+            var all = from a in context.Cars select a;
+            context.Cars.RemoveRange(all);
+            context.SaveChanges();
+            UpdateList();
         }
 
-        public void LoadDataFromFile()
-        {
-            try
-            {
-                using (StreamReader sr = new StreamReader(@"D:\file.txt"))
-                {
-                    list = JsonConvert.DeserializeObject<List<Car>>(sr.ReadToEnd().ToString());
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                using (FileStream fs = File.Create(@"D:\file.txt")) { };
-            }
-        }
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            string json = JsonConvert.SerializeObject(list);
-            using (StreamWriter sr = new StreamWriter(@"D:\file.txt"))
-            {
-                sr.Write(json);
-            }
+
+        }
+
+        private void Clear()
+        {
+            txbMarka.Text = String.Empty;
+            txbModel.Text = String.Empty;
+        }
+
+        public void UpdateList()
+        {
+            lviCarList.ItemsSource = context.Cars.ToList();
+            lviCarList.Items.Refresh();
         }
     }
 }

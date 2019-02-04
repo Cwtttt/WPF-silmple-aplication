@@ -39,3 +39,5 @@ C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\bin\Debug\EntityFr
 C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\bin\Debug\EntityFramework.xml
 C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.Migrations.InitialCreate.resources
+C:\Users\Chwast\Desktop\WPFapp\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.Migrations.updaedatabase.resources
