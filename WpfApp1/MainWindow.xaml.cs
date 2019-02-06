@@ -24,7 +24,9 @@ namespace WpfApp1
             {
                 Id = Guid.NewGuid(),
                 Mark = txbMarka.Text,
-                Model = txbModel.Text
+                Model = txbModel.Text,
+                Moc = Int32.Parse(txbMoc.Text),
+                LiczbaMiejsc = Int32.Parse(txbLiczbaMiejsc.Text)
             };
 
             context.Cars.Add(car1);
@@ -42,6 +44,8 @@ namespace WpfApp1
                 selectedId = car.Id;
                 txbMarka.Text = car.Mark;
                 txbModel.Text = car.Model;
+                txbMoc.Text = car.Moc.ToString();
+                txbLiczbaMiejsc.Text = car.LiczbaMiejsc.ToString();
                 btnEditCar.Visibility = Visibility.Visible;
             }
         }
