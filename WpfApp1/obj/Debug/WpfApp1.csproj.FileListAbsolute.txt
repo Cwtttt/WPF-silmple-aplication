@@ -66,3 +66,6 @@ C:\Users\Chwast\Desktop\WPFapp1\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1
 C:\Users\Chwast\Desktop\WPFapp1\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
 C:\Users\Chwast\Desktop\WPFapp1\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Users\Chwast\Desktop\WPFapp1\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\Chwast\Desktop\WPFapp1\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.Migrations.UpdateDB.resources
+C:\Users\Chwast\Desktop\WPFapp1\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.Migrations.UpdateDB2.resources
+C:\Users\Chwast\Desktop\WPFapp1\WPF-silmple-aplication\WpfApp1\obj\Debug\WpfApp1.Migrations.Dependency.resources

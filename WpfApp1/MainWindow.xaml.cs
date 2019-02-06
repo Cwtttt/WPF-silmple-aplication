@@ -32,6 +32,7 @@ namespace WpfApp1
 
             UpdateList();
             Clear();
+            MessageBox.Show("Dodano samochód do bazy");
         }
 
         private void LviDoubleClick(object sender, MouseButtonEventArgs e)
@@ -101,6 +102,7 @@ namespace WpfApp1
             lviCarList.ItemsSource = context.Cars.ToList();
             lviCarList.Items.Refresh();
         }
+
     }
 }
 

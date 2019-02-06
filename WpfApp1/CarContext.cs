@@ -7,8 +7,10 @@ namespace WpfApp1
     {
         public DbSet<Car> Cars { get; set; }
 
-        public CarContext() 
-            : base("Cars")
+        public DbSet<Rent> Rents { get; set; }
+
+        public CarContext()
+            : base("RentCars")
         {
         }
     }

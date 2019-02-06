@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="308.347" Width="483.347">
-    <Grid>
-        <ListView x:Name="lviCarList" HorizontalAlignment="Left" Height="100" Margin="51,42,0,0" VerticalAlignment="Top" Width="216" MouseDoubleClick="LviDoubleClick">
+        Title="MainWindow" Height="308.347" Width="750.969">
+    <Grid Margin="0,10,2,0">
+        <ListView x:Name="lviCarList" HorizontalAlignment="Left" Height="100" Margin="51,42,0,0" VerticalAlignment="Top" Width="216" MouseDoubleClick="LviDoubleClick" Background="#FFCDCDCD" BorderBrush="#FF787878" Foreground="#FF0030AE" IsSynchronizedWithCurrentItem="False">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Mark}"/>

@@ -87,8 +87,21 @@
     <Compile Include="Migrations\201902041312249_updae-database.Designer.cs">
       <DependentUpon>201902041312249_updae-database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902061256124_Update DB.cs" />
+    <Compile Include="Migrations\201902061256124_Update DB.Designer.cs">
+      <DependentUpon>201902061256124_Update DB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902061301382_Update DB2.cs" />
+    <Compile Include="Migrations\201902061301382_Update DB2.Designer.cs">
+      <DependentUpon>201902061301382_Update DB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902061305434_Dependency .cs" />
+    <Compile Include="Migrations\201902061305434_Dependency .Designer.cs">
+      <DependentUpon>201902061305434_Dependency .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Car.cs" />
+    <Compile Include="Model\Rent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -107,6 +120,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902041312249_updae-database.resx">
       <DependentUpon>201902041312249_updae-database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902061256124_Update DB.resx">
+      <DependentUpon>201902061256124_Update DB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902061301382_Update DB2.resx">
+      <DependentUpon>201902061301382_Update DB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902061305434_Dependency .resx">
+      <DependentUpon>201902061305434_Dependency .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
