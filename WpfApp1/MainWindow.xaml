@@ -5,71 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="376.347" Width="466.469">
-    <Grid Margin="10,10,11,55" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <ListView x:Name="lviCarList" HorizontalAlignment="Left"   VerticalAlignment="Top" 
-                  MouseDoubleClick="LviDoubleClick"  IsSynchronizedWithCurrentItem="True"
-                  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Mark}"/>
-                    <GridViewColumn Header="CarModel" DisplayMemberBinding="{Binding Model}"/>
-                    <GridViewColumn Header="Moc" DisplayMemberBinding="{Binding Moc}"/>
-                    <GridViewColumn Header="Liczba Miejsc" DisplayMemberBinding="{Binding LiczbaMiejsc}"/>
-                    <GridViewColumn Header="Dostępność" DisplayMemberBinding="{Binding Avaliable}"/>
-                    <GridViewColumn Header="" Width="40">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="Delete" Content="X" Click="BtnDeleteCarClick" Width="20" Height="20" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label Content="Sortuj po nazwie" Grid.Column="0" Grid.Row="0" Margin="5"/>
-        <TextBox x:Name="txtFiltr"  Grid.Column="1" Grid.Row="0" Margin="5"/>
+        Title="MainWindow" Height="375.347" Width="675.469">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Lista Samochodóww">
+                <DockPanel>
+                    <Grid>
 
-        <TextBox x:Name="txbMarka"  KeyDown="KeyEnter"
-                 Grid.Column="1" Grid.Row="3" Margin="5"/>
-        <Label Content="Marka" Grid.Column="0" Grid.Row="3" Margin="5"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
 
-        <TextBox x:Name="txbModel" KeyDown="KeyEnter" Margin="5" 
-                 Grid.Column="1" Grid.Row="4" />
-        <Label Content="Model" Grid.Column="0" Grid.Row="4" Margin="5"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
 
-        <TextBox x:Name="txbMoc" KeyDown="KeyEnter" Margin="5" 
-                 Grid.Column="1" Grid.Row="5"/>
-        <Label Content="Moc" Grid.Column="0" Grid.Row="5" Margin="5"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView x:Name="lviCarList" HorizontalAlignment="Left"   VerticalAlignment="Top" 
+                  MouseDoubleClick="LviDoubleClick"  IsSynchronizedWithCurrentItem="False"
+                  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Mark}"/>
+                                    <GridViewColumn Header="CarModel" DisplayMemberBinding="{Binding Model}"/>
+                                    <GridViewColumn Header="Moc" DisplayMemberBinding="{Binding Moc}"/>
+                                    <GridViewColumn Header="Liczba Miejsc" DisplayMemberBinding="{Binding LiczbaMiejsc}"/>
+                                    <GridViewColumn Header="Dostępność" DisplayMemberBinding="{Binding Avaliable}"/>
+                                    <GridViewColumn Header="" Width="40">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="Delete" Content="X" Click="BtnDeleteCarClick" Width="20" Height="20" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Label Content="Sortuj po nazwie" Grid.Column="0" Grid.Row="0" Margin="5"/>
+                        <TextBox x:Name="txtFiltr"  Grid.Column="1" Grid.Row="0" Margin="5" TextChanged="txtFiltr_TextChanged"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
 
-        <TextBox x:Name="txbLiczbaMiejsc" KeyDown="KeyEnter" Margin="5" 
-                 Grid.Column="1" Grid.Row="6" />
-        <Label Content="Liczba miejsc" Grid.Column="0" Grid.Row="6" Margin="5"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
 
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Wprowadzanie"  Margin="5"
+                               Grid.Column="1" Grid.Row="0"/>
+                        
+                        <TextBox x:Name="txbMarka"  KeyDown="KeyEnter" Margin="5"
+                                 Grid.Column="1" Grid.Row="1"/>
+                        
+                        <Label Content="Marka"  Margin="5"
+                               Grid.Column="0" Grid.Row="1"/>
 
-        <Label Content="Wprowadzanie" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" Margin="58,5,0,5" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="txbModel" KeyDown="KeyEnter" Margin="5" 
+                                 Grid.Column="1" Grid.Row="2"/>
+                        
+                        <Label Content="Model"  Margin="5"
+                               Grid.Column="0" Grid.Row="2"/>
 
-        <Button x:Name="btnNewCar" Content="NewCar"  Click="BtnNewCarClick"
-                Grid.Column="1" Grid.Row="8" Margin="5"/>
-        <Button x:Name ="btnEditCar" Content="Edytuj"  Click="BtnEditCarClick" Visibility="Collapsed"
-                Grid.Column="1" Grid.Row="9" Margin="5"/>
-        <Button x:Name="btnClearAll" Content="Wyczyść bazę"  Click="BtnClearAllClick"
-                Grid.Column="2" Grid.Row="1" Margin="5,5,-123,5"/>
+                        <TextBox x:Name="txbMoc" KeyDown="KeyEnter" Margin="5" 
+                                 Grid.Column="1" Grid.Row="3"/>
+                        
+                        <Label Content="Moc"  Margin="5"
+                               Grid.Column="0" Grid.Row="3"/>
+
+                        <TextBox x:Name="txbLiczbaMiejsc" KeyDown="KeyEnter" Margin="5" 
+                                 Grid.Column="1" Grid.Row="4"/>
+                        
+                        <Label Content="Liczba miejsc"  Margin="5"
+                               Grid.Column="0" Grid.Row="4"/>
+
+                        <Button x:Name="btnNewCar" Content="Wprowadz samochód"  Click="BtnNewCarClick"
+                                Grid.Column="1" Grid.Row="5"/>
+                        
+                        <Button x:Name ="btnEditCar" Content="Edytuj"  Click="BtnEditCarClick" Visibility="Collapsed" Margin="5"
+                                Grid.Column="1" Grid.Row="6"/>
+                        
+                        <Button x:Name="btnClearAll" Content="Wyczyść bazę" Click="BtnClearAllClick" Margin="5" 
+                                Grid.Column="2" Grid.Row="0"/>
+                    </Grid>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Wypozyczanie">
+                
+            </TabItem>
+        </TabControl>
     </Grid>
+    
 </Window>

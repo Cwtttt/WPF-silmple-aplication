@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using WpfApp1.Model;
 
@@ -58,6 +59,8 @@ namespace WpfApp1
             {
                 a.Mark = txbMarka.Text;
                 a.Model = txbModel.Text;
+                a.Moc = Int32.Parse(txbMoc.Text);
+                a.LiczbaMiejsc = Int32.Parse(txbLiczbaMiejsc.Text);
                 context.SaveChanges();
             }
             UpdateList();
@@ -82,6 +85,10 @@ namespace WpfApp1
             {
                 if ((sender as TextBox).Name == nameof(txbMarka).ToString())
                     txbModel.Focus();
+                else if ((sender as TextBox).Name == nameof(txbModel).ToString())
+                    txbMoc.Focus();
+                else if ((sender as TextBox).Name == nameof(txbMoc).ToString())
+                    txbLiczbaMiejsc.Focus();
                 else
                     btnNewCar.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             }
@@ -99,6 +106,8 @@ namespace WpfApp1
         {
             txbMarka.Text = String.Empty;
             txbModel.Text = String.Empty;
+            txbLiczbaMiejsc.Text = String.Empty;
+            txbMoc.Text = String.Empty;
         }
 
         public void UpdateList()
@@ -107,6 +116,22 @@ namespace WpfApp1
             lviCarList.Items.Refresh();
         }
 
+        private bool UserFilter(object item)
+        {
+            if (String.IsNullOrEmpty(txtFiltr.Text))
+                return true;
+            else
+                return ((item as Car).Mark.IndexOf
+                       (txtFiltr.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void txtFiltr_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionView widok = (CollectionView)CollectionViewSource.
+                                    GetDefaultView(lviCarList.ItemsSource);
+            widok.Filter = UserFilter;
+            CollectionViewSource.GetDefaultView(lviCarList.ItemsSource).Refresh();
+        }
     }
 }
 
