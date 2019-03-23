@@ -125,7 +125,7 @@ namespace WpfApp1
                        (txtFiltr.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
-        private void txtFiltr_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtFiltr_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionView widok = (CollectionView)CollectionViewSource.
                                     GetDefaultView(lviCarList.ItemsSource);
